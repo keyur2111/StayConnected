@@ -202,6 +202,7 @@ public class Music_Fragment extends android.support.v4.app.Fragment {
                     relativeLayout.setOnClickListener(new View.OnClickListener() {
                         @Override public void onClick(View v) {
 
+/*
                             if (SELECTED_ID != position)
                             {
                                 v.setBackgroundResource(R.color.tomatoLight);
@@ -215,6 +216,7 @@ public class Music_Fragment extends android.support.v4.app.Fragment {
                             {
                                 v.setBackgroundResource(R.color.orange);
                             }
+*/
                             Toast.makeText(getContext(), song[0], Toast.LENGTH_SHORT).show(); vibrator.vibrate(50); }
                     });
 
