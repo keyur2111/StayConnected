@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/orange"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_selected_item"
+        android:background="@drawable/ripple_effect"
+        android:layout_width="match_parent"
+        android:layout_height="60sp" >
+
+        <ImageView
+            android:layout_marginStart="5dp"
+            android:id="@+id/item_image"
+            android:src="@drawable/ic_play_arrow_24dp"
+            android:layout_centerVertical="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+        <TextView
+            android:id="@+id/item_title"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:maxEms="20"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/item_image"
+            android:text="@string/song_title" />
+
+        <TextView
+            android:id="@+id/item_artist"
+            android:textColor="#e0e0e0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/item_title"
+            android:text="@string/song_artist" />
+
+        <TextView
+            android:id="@+id/item_length"
+            android:textColor="#e0e0e0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="45dp"
+            android:layout_centerVertical="true"
+            android:text="@string/song_length" />
+
+        <Button
+            android:id="@+id/item_menu_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/ic_more_vert_24dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

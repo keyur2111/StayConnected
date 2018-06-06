@@ -1,0 +1,47 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/orange"
+    android:id="@+id/tab_music_fragment_layout"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    tools:context="vwc.com.stayconnected.Music_Fragment">
+
+    <RelativeLayout
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/music_bottom_navigation_bar"
+            android:layout_alignParentBottom="true"
+            android:elevation="5dp"
+            android:background="@color/orange"
+            app:itemTextColor="@color/music_nav_items_color"
+            app:itemIconTint="@color/music_nav_items_color"
+            app:menu="@menu/music_bottom_nav_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ListView
+            android:id="@+id/music_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fastScrollEnabled="true" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/text_Music"
+            android:text="@string/music"
+            android:textSize="50sp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>

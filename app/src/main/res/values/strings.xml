@@ -1,0 +1,39 @@
+<resources>
+
+    <string name="app_name">Stay Connected</string>
+    <string name="settings_string">Settings</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="home_fragment">Home Page</string>
+    <string name="third_fragment">Internal\nStorage</string>
+    <string name="second_fragment">Music</string>
+
+    <string name="recent_items">Recent</string>
+    <string name="history_list">History</string>
+    <string name="contact_list">Contacts</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="empty_string"></string>
+    <string name="add">Add</string>
+    <string name="search">Search</string>
+    <string name="contact_name">Contact Name</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="appbar_history">appbar_history</string>
+    <string name="show_group">Show Group</string>
+    <string name="import_export">Import/Export</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="messages">Messages</string>
+    <string name="gallery">Gallery</string>
+    <string name="song_title">Song Title</string>
+    <string name="song_artist">Song Artist</string>
+    <string name="song_length">Song Length</string>
+    <string name="new_line">\\n</string>
+    <string name="music">Music</string>
+    <string name="songs">SONGS</string>
+    <string name="albums">ALBUMS</string>
+    <string name="playlists">PLAYLISTS</string>
+    <string name="player">Player</string>
+
+</resources>

@@ -1,0 +1,18 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tomato"
+    android:id="@+id/tab_messages_fragment_layout"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    tools:context="vwc.com.stayconnected.Messages_Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:textSize="50sp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/messages" />
+
+</FrameLayout>

@@ -1,0 +1,49 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="vwc.com.stayconnected.Phone_Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:id="@+id/tab_phone_fragment_layout"
+        android:orientation="vertical"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginBottom="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_floating_button_round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/bottom_navigation_bar"
+            android:layout_marginBottom="10dp"
+            app:borderWidth="0dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:src="@drawable/ic_dialpad_24dp"
+            android:elevation="10dp" />
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_navigation_bar"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark"
+            app:itemTextColor="@color/nav_items_color"
+            app:itemIconTint="@color/nav_items_color"
+            app:menu="@menu/bottom_navigation_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</FrameLayout>
