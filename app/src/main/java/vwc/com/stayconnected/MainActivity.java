@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             // ToolBar
             appToolbar = (Toolbar) findViewById(R.id.app_toolbar);
             setSupportActionBar(appToolbar);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
             appToolbar.setTitle("Phone");
 
             // Side Navigation Bar
