@@ -43,6 +43,9 @@ public class Music_Fragment extends android.support.v4.app.Fragment {
     Vibrator vibrator;
     int SELECTED_ID = -1;
 
+    boolean Permissions = false;
+
+
     public Music_Fragment() {}
 
     @Override
@@ -50,20 +53,11 @@ public class Music_Fragment extends android.support.v4.app.Fragment {
         View second_fragment_view = inflater.inflate(R.layout.music_fragment, container, false);
         setHasOptionsMenu(true);
 
-        listView = (ListView) second_fragment_view.findViewById(R.id.music_listview);
-        vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        if(ActivityCompat.checkSelfPermission(second_fragment_view.getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+        {
+            listView = (ListView) second_fragment_view.findViewById(R.id.music_listview);
+            vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
 
-        if(ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-        {
-            Snackbar mySnackbar = Snackbar.make(second_fragment_view, "Permission Denied", Snackbar.LENGTH_SHORT);
-            mySnackbar.setAction("Grant Access", new MyUndoListener());
-            mySnackbar.setDuration(10000);
-            mySnackbar.show();
-        }
-        else
-        {
-            // Do Stuff Here. (Permission Granted)
-            //set_State_BottomNavigationBar();
             showMusic();
         }
 
@@ -134,18 +128,6 @@ public class Music_Fragment extends android.support.v4.app.Fragment {
             }
         });
 
-    }
-
-    public class MyUndoListener implements View.OnClickListener{
-
-        @Override
-        public void onClick(View v) {
-
-            if(ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-            {
-                ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.READ_EXTERNAL_STORAGE }, 1);
-            }
-        }
     }
 
     public void showMusic() {
@@ -263,4 +245,5 @@ public class Music_Fragment extends android.support.v4.app.Fragment {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
