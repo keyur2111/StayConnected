@@ -4,9 +4,7 @@ public class save_tab_state {
 
     public static int ID = 0;
 
-    public save_tab_state()
-    {
-    }
+    public save_tab_state() {}
 
     public static int getState()
     {

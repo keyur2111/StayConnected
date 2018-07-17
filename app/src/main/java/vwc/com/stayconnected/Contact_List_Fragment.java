@@ -1,6 +1,5 @@
 package vwc.com.stayconnected;
 
-
 import android.Manifest;
 import android.app.Fragment;
 import android.content.Context;
@@ -26,9 +25,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class Contact_List_Fragment extends android.support.v4.app.Fragment {
 
     RecyclerView recyclerView;
@@ -37,8 +33,6 @@ public class Contact_List_Fragment extends android.support.v4.app.Fragment {
     public Contact_List_Fragment() {
         // Required empty public constructor
     }
-
-    boolean Permissions = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

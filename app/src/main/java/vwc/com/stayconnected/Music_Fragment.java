@@ -1,6 +1,5 @@
 package vwc.com.stayconnected;
 
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
@@ -42,9 +41,6 @@ public class Music_Fragment extends android.support.v4.app.Fragment {
     ArrayAdapter<String> arrayAdapter;
     Vibrator vibrator;
     int SELECTED_ID = -1;
-
-    boolean Permissions = false;
-
 
     public Music_Fragment() {}
 

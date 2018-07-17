@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar appToolbar;
     private TabLayout tabLayout;
 
-    boolean Permissions = false;
-
     @Override
     protected void onStart() {
         super.onStart();

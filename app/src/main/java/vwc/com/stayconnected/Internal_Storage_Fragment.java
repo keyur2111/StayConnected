@@ -1,6 +1,5 @@
 package vwc.com.stayconnected;
 
-
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -22,18 +21,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class Internal_Storage_Fragment extends android.support.v4.app.Fragment {
 
     private List<String> fileList = new ArrayList<>();
 
-    public Internal_Storage_Fragment() {
-        // Required empty public constructor
-    }
-
+    public Internal_Storage_Fragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

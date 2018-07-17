@@ -33,10 +33,7 @@ import java.util.ArrayList;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
-
 public class Phone_Fragment extends android.support.v4.app.Fragment {
-
-    private android.support.v7.widget.Toolbar toolbar;
 
     public Phone_Fragment() {}
 
