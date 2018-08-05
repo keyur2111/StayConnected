@@ -33,25 +33,23 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
-        //Until user Allows all permissions, method will keep asking to allow it.
-        askforPermissions();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    private void createUI()
-    {
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        askforPermissions();
+
         setContentView(R.layout.activity_main);
 
         // ToolBar
         appToolbar = (Toolbar) findViewById(R.id.app_toolbar);
         setSupportActionBar(appToolbar);
+
+        // Remove App name from Toolbar and set custom name.
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         appToolbar.setTitle("Phone");
 
@@ -65,20 +63,42 @@ public class MainActivity extends AppCompatActivity {
         // Tab Layout
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        viewPager.setOffscreenPageLimit(5);
+        viewPager.setOffscreenPageLimit(4);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
         viewPagerAdapter.addfragments(new Phone_Fragment(), "Phone");
         viewPagerAdapter.addfragments(new Music_Fragment(), "Music");
         viewPagerAdapter.addfragments(new Internal_Storage_Fragment(), "Internal Storage");
         viewPagerAdapter.addfragments(new Gallery_Fragment(), "Gallery");
         viewPagerAdapter.addfragments(new Messages_Fragment(), "Messages");
         viewPager.setAdapter(viewPagerAdapter);
+
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setSelectedTabIndicatorColor(getColor(R.color.indigoDark));
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if(position == 0)
+                {
+                    new Phone_Fragment();
+                }
+                else if(position == 1)
+                {
+                    new Music_Fragment();
+                }
+                else if(position == 2)
+                {
+                    new Internal_Storage_Fragment();
+                }
+                else if(position == 3)
+                {
+                    new Gallery_Fragment();
+                }
+                else if(position == 4)
+                {
+                    new Messages_Fragment();
+                }
             }
 
             @Override
@@ -117,9 +137,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
+            public void onPageScrollStateChanged(int state) { }
         });
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -182,6 +200,32 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        Toast.makeText(this,"onStart()",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this,"onResume()",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(this,"onPause()",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
 
     }
 
@@ -293,13 +337,6 @@ public class MainActivity extends AppCompatActivity {
         else if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
         {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-        }
-
-        // All Permissions are Granted/Allowed.
-        else
-        {
-            Toast.makeText(this, "UI Created", Toast.LENGTH_SHORT).show();
-            createUI();
         }
     }
 

@@ -41,6 +41,7 @@ public class Music_Fragment extends android.support.v4.app.Fragment {
     ArrayAdapter<String> arrayAdapter;
     Vibrator vibrator;
     int SELECTED_ID = -1;
+    Context context;
 
     public Music_Fragment() {}
 
@@ -49,15 +50,21 @@ public class Music_Fragment extends android.support.v4.app.Fragment {
         View second_fragment_view = inflater.inflate(R.layout.music_fragment, container, false);
         setHasOptionsMenu(true);
 
-        if(ActivityCompat.checkSelfPermission(second_fragment_view.getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-        {
-            listView = (ListView) second_fragment_view.findViewById(R.id.music_listview);
-            vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-
-            showMusic();
-        }
+        context = second_fragment_view.getContext();
+        listView = (ListView) second_fragment_view.findViewById(R.id.music_listview);
+        vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
 
         return second_fragment_view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if(ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+        {
+            showMusic();
+        }
     }
 
     public void set_State_BottomNavigationBar() {
@@ -81,9 +88,11 @@ public class Music_Fragment extends android.support.v4.app.Fragment {
             bottomNavigationView.setSelectedItemId(R.id.contact_list);
         }
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
+        {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item)
+            {
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -122,21 +131,28 @@ public class Music_Fragment extends android.support.v4.app.Fragment {
                 }
                 return true;
             }
+
         });
 
     }
 
     public void showMusic() {
+
         arrayList = new ArrayList<>();
+
         getMusic();
+
         if (arrayList != null) {
             Collections.sort(arrayList);
             arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, arrayList){
                 @NonNull
                 @Override public View getView(final int position, final View convertView, @NonNull final ViewGroup parent) {
+
                     LayoutInflater layoutInflater = getLayoutInflater();
                     @SuppressLint({"ViewHolder", "InflateParams"}) final View view = layoutInflater.inflate(R.layout.music_listitem_layout, null, true);
+
                     final RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.relativelayout_selected_item);
+
                     TextView textTitle = (TextView) view.findViewById(R.id.item_title);
                     TextView textArtist = (TextView) view.findViewById(R.id.item_artist);
                     TextView textLength = (TextView) view.findViewById(R.id.item_length);
@@ -195,7 +211,8 @@ public class Music_Fragment extends android.support.v4.app.Fragment {
                                 v.setBackgroundResource(R.color.orange);
                             }
 */
-                            Toast.makeText(getContext(), song[0], Toast.LENGTH_SHORT).show(); vibrator.vibrate(50); }
+                            Toast.makeText(getContext(), song[0], Toast.LENGTH_SHORT).show();
+                            vibrator.vibrate(50); }
                     });
 
                     return view;

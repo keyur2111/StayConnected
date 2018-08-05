@@ -35,29 +35,49 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class Phone_Fragment extends android.support.v4.app.Fragment {
 
+    FloatingActionButton floatingActionButton_Phone;
+    BottomNavigationView bottomNavigationView;
+    FragmentManager fragmentManager;
+    Context context;
+
     public Phone_Fragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         final View phone_fragment_view = inflater.inflate(R.layout.phone_fragment, container,false);
 
-        if(ActivityCompat.checkSelfPermission(phone_fragment_view.getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
+        context = phone_fragment_view.getContext();
+        floatingActionButton_Phone = (FloatingActionButton) phone_fragment_view.findViewById(R.id.add_floating_button_round);
+        bottomNavigationView = (BottomNavigationView) phone_fragment_view.findViewById(R.id.bottom_navigation_bar);
+        fragmentManager = getActivity().getSupportFragmentManager();
+
+        return phone_fragment_view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
         {
-            Toast.makeText(phone_fragment_view.getContext(), "Storage Permission is disabled", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Storage Permission is disabled", Toast.LENGTH_LONG).show();
         }
         else
         {
-            FloatingActionButton floatingActionButton_Phone = (FloatingActionButton) phone_fragment_view.findViewById(R.id.add_floating_button_round);
             floatingActionButton_Phone.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v)
                 {
-
+                    Toast.makeText(context, "Dialer", Toast.LENGTH_SHORT).show();
                 }
             });
 
-            BottomNavigationView bottomNavigationView = (BottomNavigationView) phone_fragment_view.findViewById(R.id.bottom_navigation_bar);
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
             if (save_tab_state.getState() == 0)
@@ -124,8 +144,8 @@ public class Phone_Fragment extends android.support.v4.app.Fragment {
                 }
             });
 
+
         }
 
-        return phone_fragment_view;
     }
 }

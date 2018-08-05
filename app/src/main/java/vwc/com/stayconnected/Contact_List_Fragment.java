@@ -29,6 +29,7 @@ public class Contact_List_Fragment extends android.support.v4.app.Fragment {
 
     RecyclerView recyclerView;
     ArrayList<String> contact_names = new ArrayList<>(), mobile_numbers = new ArrayList<>();
+    Context context;
 
     public Contact_List_Fragment() {
         // Required empty public constructor
@@ -41,7 +42,19 @@ public class Contact_List_Fragment extends android.support.v4.app.Fragment {
         View contact_fragment =  inflater.inflate(R.layout.contact_list_fragment, container, false);
         setHasOptionsMenu(true);
 
-        if(ActivityCompat.checkSelfPermission(contact_fragment.getContext(), Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED)
+        context = contact_fragment.getContext();
+        recyclerView = (RecyclerView) contact_fragment.findViewById(R.id.recycler_view);
+
+
+        return contact_fragment;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
+        if(ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED)
         {
             String[] PROJECTION_MAIN = new String[]{
                     ContactsContract.Contacts._ID,
@@ -59,13 +72,9 @@ public class Contact_List_Fragment extends android.support.v4.app.Fragment {
                 mobile_numbers.add(phone);
             }
 
-            recyclerView = (RecyclerView) contact_fragment.findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerView.setAdapter(new RecyclerAdapter(contact_names, mobile_numbers));
 
         }
-
-        return contact_fragment;
     }
-
 }

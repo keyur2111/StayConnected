@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     defaultConfig {
         applicationId "vwc.com.stayconnected"
-        minSdkVersion 24
+        minSdkVersion 23
         //noinspection OldTargetApi
         targetSdkVersion 25
         versionCode 1
